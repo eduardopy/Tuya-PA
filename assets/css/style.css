@@ -478,11 +478,11 @@ h6 {
   font-weight: 700;
   line-height: 56px;
   text-transform: uppercase;
-  color: #2c4964;
+  color: #f6f7f9;
 }
 
 #hero h2 {
-  color: #2c4964;
+  color: #f2f4f6;
   margin: 10px 0 0 0;
   font-size: 24px;
 }
@@ -502,9 +502,32 @@ h6 {
   background: #1977cc;
 }
 
+
 #hero .btn-get-started:hover {
   background: #3291e6;
 }
+
+
+#hero .btn-portal:hover {
+  background: #3291e6;
+}
+
+
+#hero .btn-portal {
+  font-family: "Raleway", sans-serif;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 12px 35px;
+  margin-top: 30px;
+  border-radius: 50px;
+  transition: 0.5s;
+  color: #fff;
+  background: #1977cc;
+}
+
 
 @media (min-width: 1024px) {
   #hero {
