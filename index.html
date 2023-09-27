@@ -28,7 +28,12 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
-
+ 
+  <style>
+    .loading, .error-message, .sent-message {
+        display: none;
+    }
+</style>
 </head>
 
 <body>
@@ -54,10 +59,10 @@
     <div class="container d-flex align-items-center">
 
       <!-- Uncomment below if you prefer to use an image logo -->
-      <a href="index.html" class="logo me-auto">
-        <img src="assets/img/logo.png" alt="TUYA PA Logo" class="img-fluid">
-        <span class="logo-text">TUYA PA</span>
-      </a>
+<a href="index.html" class="logo me-auto">
+  <img src="assets/img/logo.png" alt="TUYA PA Logo" class="img-fluid">
+  <span class="logo-text">TUYA PA</span>
+</a>
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
@@ -305,57 +310,53 @@
           <p>You can request an appointment in the form below and a member of our team will reach out to you.</p>
         </div>
 
-        <form action="forms/appointment.php" method="post" role="form" class="php-email-form">
+        <form action="https://api.staticforms.xyz/submit" method="post" id="appointmentForm" class="php-email-form">
+          <input type="hidden" name="accessKey" value="3364ce0c-994d-40cc-91d2-a1d87c1b322f">
+          
+          <!-- Using predefined fields -->
           <div class="row">
-            <div class="col-md-4 form-group">
-              <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
-              <div class="validate"></div>
-            </div>
-            <div class="col-md-4 form-group mt-3 mt-md-0">
-              <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email">
-              <div class="validate"></div>
-            </div>
-            <div class="col-md-4 form-group mt-3 mt-md-0">
-              <input type="tel" class="form-control" name="phone" id="phone" placeholder="Your Phone" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
-              <div class="validate"></div>
-            </div>
+              <div class="col-md-4 form-group">
+                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name">
+              </div>
+              <div class="col-md-4 form-group mt-3 mt-md-0">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+              </div>
+              <div class="col-md-4 form-group mt-3 mt-md-0">
+                  <input type="tel" class="form-control" name="phone" id="phone" placeholder="Your Phone">
+              </div>
           </div>
+          
+          <!-- Using custom fields for appointment date and selected doctor -->
           <div class="row">
-            <div class="col-md-4 form-group mt-3">
-              <input type="datetime" name="date" class="form-control datepicker" id="date" placeholder="Appointment Date" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
-              <div class="validate"></div>
-            </div>
-            <!-- <div class="col-md-4 form-group mt-3">
-              <select name="department" id="department" class="form-select">
-                <option value="">Select Department</option>
-                <option value="Department 1">Department 1</option>
-                <option value="Department 2">Department 2</option>
-                <option value="Department 3">Department 3</option>
-              </select>
-              <div class="validate"></div>
-            </div> -->
-            <div class="col-md-4 form-group mt-3">
-              <select name="doctor" id="doctor" class="form-select">
-                <option value="">Select Doctor</option>
-                <option value="Doctor 1">Dr. Morel</option>
-                <option value="Doctor 2">Dr. Fermin</option>
-                <option value="Doctor 3">Dimaso</option>
-              </select>
-              <div class="validate"></div>
-            </div>
+              <div class="col-md-4 form-group mt-3">
+                  <input type="date" name="$appointmentDate" class="form-control" id="appointmentDate">
+              </div>
+              <div class="col-md-4 form-group mt-3">
+                  <select name="$selectedDoctor" id="selectedDoctor" class="form-select">
+                      <option value="">Select Doctor</option>
+                      <option value="Dr. Morel">Dr. Morel</option>
+                      <option value="Dr. Fermin">Dr. Fermin</option>
+                      <option value="Dimaso">Dimaso</option>
+                  </select>
+              </div>
           </div>
-
+      
           <div class="form-group mt-3">
-            <textarea class="form-control" name="message" rows="5" placeholder="Message (Optional)"></textarea>
-            <div class="validate"></div>
+              <textarea class="form-control" name="message" rows="5" placeholder="Message (Optional)"></textarea>
           </div>
+          
           <div class="mb-3">
-            <div class="loading">Loading</div>
-            <div class="error-message"></div>
-            <div class="sent-message">Your appointment request has been sent successfully. Thank you!</div>
+              <div class="loading">Loading</div>
+              <div class="error-message"></div>
+              <div class="sent-message">Your appointment request has been sent successfully. Thank you!</div>
           </div>
+          
+          <!-- Redirect after submission -->
+          <input type="hidden" name="redirectTo" value="https://www.tuyamedical.com/">
           <div class="text-center"><button type="submit">Make an Appointment</button></div>
-        </form>
+      </form>
+      
+      
 
       </div>
     </section><!-- End Appointment Section -->
@@ -750,52 +751,51 @@
 
       </div>
     </section><!-- End Gallery Section -->
-
-    <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact">
-      <div class="container">
-
-        <div class="section-title">
+<!-- ======= Contact Section ======= -->
+<section id="contact" class="contact">
+  <div class="container">
+      <div class="section-title">
           <h2>Contact</h2>
           <!-- <p>We are still building these sections of the website.</p> -->
-        </div>
       </div>
+  </div>
 
-      <div>
-        <iframe style="border:0; top:-30px; width: 100%; height: 380px;" src="https://www.google.com/maps/d/embed?mid=1SFVXX0OY2LEwzDN4YoR7fLPqunmp148&ehbc=2E312F" frameborder="0" allowfullscreen></iframe>
-      </div>
+  <div>
+      <iframe style="border:0; top:-30px; width: 100%; height: 380px;" src="https://www.google.com/maps/d/embed?mid=1SFVXX0OY2LEwzDN4YoR7fLPqunmp148&ehbc=2E312F" frameborder="0" allowfullscreen></iframe>
+  </div>
 
-      <div class="container">
-        <div class="row mt-5">
+  <div class="container">
+    <div class="row mt-5">
 
-          <div class="col-lg-4">
-            <div class="info">
-              <div class="address">
-                <i class="bi bi-geo-alt"></i>
-                <h4>Locations:</h4>
-                <p>13230 US Highway 1, Sebastian, FL, 32958</p>
-                <p>752 S US HIGHWAY 1, Vero Beach ,FL,32962</p> 
-              </div>
-
-              <div class="email">
-                <i class="bi bi-envelope"></i>
-                <h4>Email:</h4>
-                <p>tuyapa772@gmail.com</p>
-              </div>
-
-              <div class="phone">
-                <i class="bi bi-phone"></i>
-                <h4>Call:</h4>
-                <p>(772) 589-0300</p>
-              </div>
-
-            </div>
-
+      <div class="col-lg-4">
+        <div class="info">
+          <div class="address">
+            <i class="bi bi-geo-alt"></i>
+            <h4>Locations:</h4>
+            <p>13230 US Highway 1, Sebastian, FL, 32958</p>
+            <p>752 S US HIGHWAY 1, Vero Beach ,FL,32962</p> 
           </div>
 
+          <div class="email">
+            <i class="bi bi-envelope"></i>
+            <h4>Email:</h4>
+            <p>Please use the form provided</p>
+          </div>
+
+          <div class="phone">
+            <i class="bi bi-phone"></i>
+            <h4>Call:</h4>
+            <p>(772) 589-0300</p>
+          </div>
+
+        </div>
+
+      </div>
           <div class="col-lg-8 mt-5 mt-lg-0">
 
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+            <form action="https://api.staticforms.xyz/submit" method="post" id="staticform" class="php-email-form">
+              
+              <input type="hidden" name="accessKey" value="3364ce0c-994d-40cc-91d2-a1d87c1b322f">
               <div class="row">
                 <div class="col-md-6 form-group">
                   <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
@@ -815,18 +815,15 @@
                 <div class="error-message"></div>
                 <div class="sent-message">Your message has been sent. Thank you!</div>
               </div>
+              <input type="hidden" name="redirectTo" value="https://www.tuyamedical.com/">
               <div class="text-center"><button type="submit">Send Message</button></div>
             </form>
 
           </div>
 
-        </div>
-
       </div>
-    </section><!-- End Contact Section -->
-
-  </main><!-- End #main -->
-
+  </div>
+</section><!-- End Contact Section -->
   <!-- ======= Footer ======= -->
   <footer id="footer">
 
@@ -908,10 +905,11 @@
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <!-- script src="assets/vendor/php-email-form/validate.js"></script>
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+
 
 </body>
 
