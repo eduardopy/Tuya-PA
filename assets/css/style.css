@@ -1203,6 +1203,17 @@ section {
   border-radius: 50%;
 }
 
+.doctors .member .pic.giovana {
+  height: 180px;
+}
+
+.doctors .member .pic.giovana img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 38%;
+}
+
 .doctors .member .pic img {
   transition: ease-in-out 0.3s;
 }
